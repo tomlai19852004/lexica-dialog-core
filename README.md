@@ -1,0 +1,1 @@
+#Lexica Dialog Core
