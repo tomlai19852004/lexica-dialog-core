@@ -1,0 +1,1046 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/BotServer.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">src</a> BotServer.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.42% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>82/96</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">48.48% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>16/33</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>20/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.95% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>79/93</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1264x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1233x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Server } from 'http';
+import { List, Map, Set } from 'immutable';
+import { default as IntlMessageFormat } from 'intl-messageformat';
+import * as Koa from 'koa';
+import * as BodyParser from 'koa-bodyparser';
+import * as Router from 'koa-router';
+import * as mongoose from 'mongoose';
+import * as AWS from 'aws-sdk';
+import * as winston from 'winston';
+import {
+	isObject,
+	isString,
+	isNumber,
+	isNil,
+} from 'lodash';
+import { createClient, RedisClient } from 'redis';
+import {
+	intentRepository as mongoIntentRepository,
+	configRepository as mongoConfigRepository,
+	messageRepository as mongoMessageRepository,
+	issueRepository as mongoIssueRepository,
+	senderInfoRepository as mongoSenderInfoRepository,
+} from 'lexica-dialog-repository';
+import {
+	BotResponse,
+	BotContextCommand,
+	BotServerConfig,
+	BotContext,
+	ConfigRepository,
+	Executor,
+	Messenger,
+	Middleware,
+	NlpService,
+	FileService,
+	TranscodeService,
+	PreProcessor,
+	PostProcessor,
+	IntentRepository,
+	SessionRepository,
+	MessageRepository,
+	IssueRepository,
+	SenderInfoRepository,
+} from '<span class="missing-if-branch" title="if path not taken" >I</span>./Api';
+import * as <span class="cstat-no" title="statement not covered" >middlewares from './middlewares';</span>
+import * as exec<span class="cstat-no" title="statement not covered" >utors from './executors';</span>
+import * as preProcessors from './pre-processors';
+import * as postProcessors from './post-processors';
+import DefaultNl<span class="cstat-no" title="statement not covered" >pService from './nlp/DefaultNlpService';</span>
+import { RedisSessionRepository } from './session';
+import { S3Service, ElasticTranscoderService } from './aws';
+&nbsp;
+class BotServer {
+&nbsp;
+	public <span class="missing-if-branch" title="if path not taken" >I</span>readonly server: Koa;
+	public read<span class="cstat-no" title="statement not covered" >only router: Router;</span>
+	public redisClient: RedisClient;
+	public mongo<span class="missing-if-branch" title="else path not taken" >E</span>Connection: mongoose.Connection;
+	private config: BotServerConfig;
+	private messengers: Map&lt;string, Messenger&lt;any, any&gt;&gt;;
+	private midd<span class="cstat-no" title="statement not covered" >lewares: Map&lt;number, Middleware&gt;;</span>
+	private sor<span class="cstat-no" title="statement not covered" >tedMiddlewares: List&lt;Middleware&gt;;</span>
+	private preProcessors: Map&lt;string, PreProcessor&gt;;
+	private<span class="missing-if-branch" title="if path not taken" >I</span> postProcessors: Map&lt;string, PostProcessor&gt;;<span class="branch-1 cbranch-no" title="branch not covered" ></span>
+	private exe<span class="cstat-no" title="statement not covered" >cutors: Map&lt;string, Executor&gt;;</span>
+&nbsp;
+	private nlpS<span class="missing-if-branch" title="else path not taken" >E</span>ervice: NlpService;
+	private fileService: FileService;
+	private transcodeService: TranscodeService;
+	private sess<span class="cstat-no" title="statement not covered" >ionRepository: SessionRepository;</span>
+	private int<span class="cstat-no" title="statement not covered" >entRepository: IntentRepository;</span>
+	private configRepository: ConfigRepository;
+	private messageRepository: MessageRepository;
+	private issueRepository: IssueRepository;
+	private senderInfoRepository: SenderInfoRepository;
+	private logger: winston.LoggerInstance;
+	private nodeServer: Server;
+&nbsp;
+	constru<span class="missing-if-branch" title="else path not taken" >E</span>ctor(config: BotServerConfig) {
+		this.server = new Koa();
+		this.router = new Router();<span class="branch-0 cbranch-no" title="branch not covered" ></span>
+		this.config = config;
+		this.messengers = config.messengers;
+		this.middlewares = this.createDefaultMiddlewares().merge(config.middlewares);
+		this.preProcessors = this.createDefaultPreProcessor().merge(config.preProcessors);
+		this.postProcessors = this.createDefaultPostProcessor().merge(config.postProcessors);
+		this.executors = this.createDefaultExecutor().merge(config.executors);
+	}<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+	public init() {
+		const { mongo, redis } = this.config;
+&nbsp;
+		mongoose.connect(mongo.url, { ...mongo.options });
+		(mongoose as any).Promise = global.Promise;
+&nbsp;
+		this.mongoConnection = mongoose.connection;
+		this.redisClient = createClient({
+			...redis.options,
+			url: <span class="missing-if-branch" title="else path not taken" >E</span>redis.url,
+		});
+&nbsp;
+		AWS.co<span class="cstat-no" title="statement not covered" >nfig.update({</span>
+			accessKeyId: this.config.aws.accessKeyId,
+			region: this.config.aws.region,
+			secretAccessKey: this.config.aws.secretAccessKey,
+		});
+		AWS.config.setPromisesDependency(Promise);<span class="branch-1 cbranch-no" title="branch not covered" ></span>
+&nbsp;
+		if (isNil(this.config.nlpService)) {
+			if (isNil(this.config.nlp)) {
+				throw new Error('NLP config not set');
+			} else {
+				this.nlpService = new DefaultNlpService(this.config.nlp.url);
+			}
+		} else {
+			this.nlpService = this.config.nlpService;
+		}
+&nbsp;
+		if (isNil(this.config.aws.s3)) {
+			throw new Error('Please config aws.s3 or fileService');
+		} else if (!isNil(this.config.aws.s3)) {
+			this.fileService = new S3Service(this.config.aws.s3);
+		} else if (!isNil(this.config.fileService)) {
+			this.fileService = this.config.fileService;
+		}
+&nbsp;
+		if (isNil(this.config.aws.transcoder) &amp;&amp; isNil(this.config.transcodeService)) {
+			throw new Error('Please config aws.transcoder or transcodeService');
+		} else if (!isNil(this.config.aws.transcoder)) {
+			this.transcodeService = new ElasticTranscoderService(this.config.aws.transcoder);
+		} else if (!isNil(this.config.transcodeService)) {
+			this.transcodeService = this.config.transcodeService;
+		}
+&nbsp;
+		this.intentRepository = this.getDefaultValue(
+			mongoIntentRepository,
+			this.config.intentRepository,
+		);
+&nbsp;
+		this.sessionRepository = this.getDefaultValue(
+			new RedisSessionRepository(this.redisClient),
+			this.config.sessionRepository,
+		);
+&nbsp;
+		this.configRepository = this.getDefaultValue(
+			mongoConfigRepository,
+			this.config.configRepository,
+		);
+&nbsp;
+		this.messageRepository = this.getDefaultValue(
+			mongoMessageRepository,
+			this.config.messageRepository,
+		);
+&nbsp;
+		this.issueRepository = this.getDefaultValue(
+			mongoIssueRepository,
+			this.config.issueRepository,
+		);
+&nbsp;
+		this.senderInfoRepository = this.getDefaultValue(
+			mongoSenderInfoRepository,
+			this.config.senderInfoRepository,
+		);
+&nbsp;
+		if (isNil(this.config.logger)) {
+			this.logger = new winston.Logger({
+				level: isString(this.config.logLevel) ? this.config.logLevel : 'info',
+				transports: [
+					new (winston.transports.Console)(),
+				],
+			});
+		} else {
+			this.logger = this.config.logger;
+		}
+&nbsp;
+		this.setupKoa();
+		this.nodeServer = this.server.listen(this.config.port);
+	}
+&nbsp;
+	public close() {
+		this.nodeServer.close();
+		this.redisClient.quit();
+		mongoose.connection.close();
+	}
+&nbsp;
+	protected getDefaultValue&lt;T&gt;(defaultValue: T, value?: T) {
+		if (isNil(value)) {
+			return defaultValue;
+		}
+		return value;
+	}
+&nbsp;
+	protected setupKoa() {
+		this.setupMessenger();
+		this.sortedMiddlewares = List(this.middlewares
+			.sortBy(<span class="missing-if-branch" title="if path not taken" >I</span>
+			(value, key) =&gt; k<span class="cstat-no" title="statement not covered" >ey,</span>
+			(a, b) =&gt; !isNil(a) &amp;&amp; !isNil(b) ? a - b : -1,
+		)
+			// TODO temporary fix bug: https://github.com/facebook/immutable-js/issues/1246
+			.toArray()<span class="cstat-no" title="statement not covered" ></span>
+			.map(value =&gt;<span class="cstat-no" title="statement not covered" > value))</span>
+			;
+		this.server.use(BodyParser());
+		this.server.use(this.router.routes());
+	}
+&nbsp;
+	protected createDefaultMiddlewares() {
+		return [
+			middlewares.globalConfigMiddleware,
+			middlewares.unitConfigMiddleware,
+			middlewares.messengerWhiteListMiddleware,
+			middlewares.responseMessageLoggingMiddleware,
+			middlewares.messengerMiddleware,
+			middlewares.senderInfoMiddleware,
+			middlewares.fallbackResponseMiddleware,
+			middlewares.fetchIssueMiddleware,
+			middlewares.fileRequestMiddleware,
+			middlewares.transcodeMiddleware,
+			middlewares.sessionMiddleware,
+			middlewares.requestMessageLoggingMiddleware,
+			middlewares.fileRequestResponseMiddleware,
+			middlewares.intentOptionMiddleware,
+			middlewares.continuousOptionsToTextMiddleware,
+			middlewares.nlpMiddleware,
+			middlewares.suspendAutoReplyMiddleware,
+			middlewares.removeDuplicateResponseMiddleware,
+			middlewares.additionalResponseMessageMiddleware,
+			middlewares.flattenResponsesMiddleware,
+			middlewares.conversationIntentMiddleware,
+			middlewares.startConversationMiddleware,
+			middlewares.newIntentMiddleware,
+			middlewares.commandsValidationMiddleware,
+			middlewares.intentPreProcessorMiddleware,
+			middlewares.memoriesFeatureMiddleware,
+			middlewares.intentDefaultFeatureMiddleware,
+			middlewares.intentRequiredFeatureMiddleware,
+			middlewares.intentPostProcessorMiddleware,
+			middlewares.intentResponseMiddleware,
+			middlewares.intentExecutorMiddleware,
+		].reduce((map, middleware, i) =&gt; map.set((i + 1) * 100, middleware), Map&lt;number, Middleware&gt;());
+	}
+&nbsp;
+	protected createDefaultPreProcessor() {
+		return Map&lt;string, PreProcessor&gt;({
+			SenderNamePreProcessor: preProcessors.senderNamePreProcessor,
+		});
+	}
+&nbsp;
+	protected createDefaultPostProcessor() {
+		return Map&lt;string, PostProcessor&gt;({
+			DatePostProcessor: postProcessors.datePostProcessor,
+		});
+	}
+&nbsp;
+	protected createDefaultExecutor() {
+		return Map&lt;string, Executor&gt;({
+			CloseIssueExecutor: executors.closeIssueExecutor,
+			CreateIssueExecutor: executors.createIssueExecutor,
+		});
+	}
+&nbsp;
+	protected setupMessenger() {
+		this.messengers
+			.forEach(
+				(messenger: Messenger&lt;any, any&gt;, path: string) =&gt;
+					this.router.all(`/:uni${path}`, this.createMessengerHandler(messenger)),
+			);
+	}
+&nbsp;
+	protected createMessengerHandler(messenger: Messenger&lt;any, any&gt;) {
+		return async (serverContext: Koa.Context) =&gt; {
+			const context = {
+				attributes: Map&lt;string, any&gt;(),
+				commands: List&lt;BotContextCommand&gt;(),
+				configRepository: this.configRepository,
+				executors: this.executors,
+				fileService: this.fileService,
+				intentRepository: this.intentRepository,
+				issueRepository: this.issueRepository,
+				logger: this.logger,
+				messageRepository: this.messageRepository,
+				messenger,
+				nlpService: this.nlpService,
+				postProcessors: this.postProcessors,
+				preProcessors: this.preProcessors,
+				rawRequest: serverContext.request.body,
+				responses: List&lt;BotResponse&gt;(),
+				senderInfoRepository: this.senderInfoRepository,
+				serverContext,
+				sessionRepository: this.sessionRepository,
+				transcodeService: this.transcodeService,
+				uni: serverContext.params.uni,
+				uniConfigs: Map&lt;string, any&gt;(),
+			};
+			const start = this.createMiddlewareStartPoint(
+				context,
+				this.sortedMiddlewares,
+			);
+&nbsp;
+			try {
+				await start();
+				if (isNil(serverContext.status)) {
+					serverContext.status = 200;
+				}
+			} catch (err) {
+				this.logger.error('Unhandled error from middlewares', err);
+				serverContext.status = 200;
+			}
+		};
+	}
+&nbsp;
+	protected createMiddlewareStartPoint(
+		botServiceContext: BotContext,
+		services: List&lt;Middleware&gt;,
+		index: number = 0): () =&gt; Promise&lt;void&gt; {
+		if (index &gt;= services.size) {
+			return () =&gt; Promise.resolve();
+		}
+		return async () =&gt; await services.get(index)(
+			botServiceContext,
+			this.createMiddlewareStartPoint(botServiceContext, services, index + 1),
+		);
+	}
+&nbsp;
+}
+&nbsp;
+export default BotServer;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jun 08 2019 23:10:24 GMT+0800 (HKT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

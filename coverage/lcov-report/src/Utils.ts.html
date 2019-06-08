@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/Utils.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">src</a> Utils.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.38% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>27/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">58.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>7/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>9/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">86.21% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>25/29</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">308x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { isNil } from 'lodash';
+import { BotError, BotErrorCode, BotResponse, ConfigRepository } from './Api';
+import { Map, List } from 'immutable';
+import { default as IntlMessageFormat } from 'intl-messageformat';
+import { Config } from 'lexica-dialog-model/dist/Config';
+import {
+	Message,
+	Response,
+	ResponseType,
+} from 'lexica-dialog-model/dist/Intent';
+&nbsp;
+function intentResponsesToBotResponses(
+	responses: Response[],
+	features: Map&lt;string, any&gt;,
+	locale: string): List&lt;BotResponse&gt; {
+	return responses
+		.map(response =&gt; intentResponseToBotResponse(response, features, locale))
+		.reduce((a, b) =&gt; a.concat(b), List&lt;BotResponse&gt;())
+		.toList();
+}
+&nbsp;
+function intentResponseToBotResponse(
+	response: Response,
+	features: Map&lt;string, any&gt;,
+	locale: string): List&lt;BotResponse&gt; {
+	let results: List&lt;BotResponse&gt;;
+	if (resp<span class="missing-if-branch" title="else path not taken" >E</span>onse.type === ResponseType.TEXT &amp;&amp; !isNil(response.messages)) {
+		const message: string = extractMessage(response.messages, features, locale);
+		const responses = message
+			.split('[^LEXICA^]')
+			.map(msg =&gt; ({
+				message: msg,
+				type: ResponseType.TEXT,
+			}));
+		results = List&lt;BotResponse&gt;(responses);
+	} else if (response.type === ResponseType.OPTIONS &amp;&amp; !isNil(response.options)) {
+		const options = response.options.map(option =&gt; ({
+			command: option.command,
+			features: option.features,
+			message: this.extractMessage(option.messages, features, locale),
+			textOn<span class="cstat-no" title="statement not covered" >lyIndicator: option.textOnlyIndicator,</span>
+		}));<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+		results = List&lt;BotResponse&gt;([{
+			forceShow: response.forceShow,
+			message: this.extractMessage(response.messages, features, locale),
+			options,
+			type:<span class="cstat-no" title="statement not covered" > ResponseType.OPTIONS,</span>
+		}]);
+	} else if (response.type === ResponseType.ITEMS &amp;&amp; !isNil(response.items)) {
+		const items = response.items.map(item =&gt; ({
+			message: this.extractMessage(item.messages, features, locale),
+			type: item.type,
+			url: item.url,
+		}));<span class="cstat-no" title="statement not covered" ></span>
+		results = List&lt;BotResponse&gt;([{
+			items,
+			message: this.extractMessage(response.messages, features, locale),
+			type: ResponseType.ITEMS,
+		}]);
+	} else {
+		throw new BotError(BotErrorCode.INVALID_RESPONSE_TYPE);
+	}
+	return results;
+}
+&nbsp;
+function extractMessage(
+	messages: Message[],
+	feature: Map&lt;string, string&gt;,
+	locale: string): string {
+	const text = messages[Math.floor(Math.random() * messages.length)];
+	return new IntlMessageFormat(text[locale], locale).format(feature.toObject());
+}
+&nbsp;
+function toConfigMap(configs: Config[]): Map&lt;string, Config&gt; {
+	return configs.reduce(
+		(map, config) =&gt; map.set(config.key.toString(), config), Map&lt;string, Config&gt;(),
+	);
+}
+&nbsp;
+export {
+	intentResponsesToBotResponses,
+	intentResponseToBotResponse,
+	extractMessage,
+	toConfigMap,
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jun 08 2019 23:10:24 GMT+0800 (HKT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

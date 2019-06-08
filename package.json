@@ -1,0 +1,66 @@
+{
+  "name": "lexica-dialog-core",
+  "version": "1.0.0",
+  "description": "Core server for Lexica dialog agent.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --config jest.config.js --runInBand",
+    "build": "tsc",
+    "lint": "tslint -p tsconfig.json",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomlai19852004/lexica-dialog-core.git"
+  },
+  "keywords": [
+    "Lexica",
+    "Virtual Agent"
+  ],
+  "author": "Tom Lai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomlai19852004/lexica-dialog-core/issues"
+  },
+  "homepage": "https://github.com/tomlai19852004/lexica-dialog-core#readme",
+  "devDependencies": {
+    "typescript": "^3.5.1",
+    "@types/jest": "^20.0.8",
+    "del-cli": "^1.1.0",
+    "dotenv": "^4.0.0",
+    "jest": "^20.0.4",
+    "pre-commit": "^1.2.2",
+    "ts-jest": "^20.0.14",
+    "prettier": "^1.17.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint": "^5.9.1"
+  },
+  "dependencies": {
+    "lexica-dialog-model": "^1.0.1",
+    "lexica-dialog-repository": "^1.0.0",
+    "@types/intl-messageformat": "^1.3.0",
+    "@types/koa": "^2.0.43",
+    "@types/koa-bodyparser": "^3.0.26",
+    "@types/koa-router": "^7.0.27",
+    "@types/lodash": "^4.14.98",
+    "@types/redis": "^2.8.5",
+    "@types/request": "^2.47.0",
+    "@types/request-promise-native": "^1.0.12",
+    "@types/uuid": "^3.4.3",
+    "@types/winston": "^2.3.7",
+    "aws-sdk": "^2.188.0",
+    "immutable": "^3.8.2",
+    "intl-messageformat": "^2.2.0",
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.20.1",
+    "redis": "^2.8.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
+    "uuid": "^3.2.1",
+    "winston": "^2.4.0"
+  },
+  "files": ["dist/**/*"]
+}

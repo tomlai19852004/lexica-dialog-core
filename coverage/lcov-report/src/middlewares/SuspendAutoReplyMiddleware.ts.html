@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/middlewares/SuspendAutoReplyMiddleware.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/middlewares</a> SuspendAutoReplyMiddleware.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">94.38% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>84/89</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">78.85% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>41/52</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>9/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">94.25% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>82/87</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Map, List } from 'immutable';
+import { isNil } from 'lodash';
+import { Middleware, RunTimeConfig, MessageRepository } from '../Api';
+import { Issue, Status } from 'lexica-dialog-model/dist/Issue';
+import {
+	RequestMessage,
+	BaseMessage,
+	Response,
+	MessageType,
+} from 'lexica-dialog-model/dist/Message';
+&nbsp;
+const updateLog = async (
+	messageRepository: MessageRepository,
+	requestMessage: RequestMessage,
+	issue: Issue) =&gt; {
+	requestMessage.issueId = issue.id;
+	await messageRepository.save(requestMessage);
+};
+&nbsp;
+const sortMessage = (messages: BaseMessage[]) =&gt; {
+	const sortedMessages = messages.slice();
+	sortedMessages.sort((a: BaseMessage, b: BaseMessage) =&gt; a.date.getTime() - b.date.getTime());
+	return sortedMessages;
+};
+<span class="missing-if-branch" title="if path not taken" >I</span>
+const fi<span class="cstat-no" title="statement not covered" >ndFirstLib</span>rarianMessage = (messages: BaseMessage[]) =&gt; {
+	const sortedMessages = sortMessage(messages).filter(message =&gt; isNil(message.sessionId));
+	if (sortedMessages.length === 0) {
+		return null;
+	}
+	return sortedMessages[0];
+};
+&nbsp;
+const getLastMessageTimeGap = (messages: BaseMessage[]) =&gt; {
+	if <span class="missing-if-branch" title="else path not taken" >E</span>(messages.length &lt;= 1) {
+		return 0;
+	}
+	const sortedMessages = sortMessage(messages);
+	const lastMessage = sortedMessages.pop() as BaseMessage;
+	const last2Message = sortedMessages.pop() as BaseMessage;
+	return last<span class="missing-if-branch" title="else path not taken" >E</span>Message.date.getTime() - last2Message.date.getTime();
+};
+&nbsp;
+const suspendAutoReplyMiddleware: Middleware = async (context, next) =&gt; {
+	const {
+		uni,
+		uniConfigs,
+		request,
+		messenger,
+		issueRepository,
+		messageReposit<span class="missing-if-branch" title="else path not taken" >E</span>ory,
+		requestMessage,
+		intentRepository,
+		logger,
+	} = context;
+&nbsp;
+	if (!isNil(request)) {
+		const { senderId } = request;
+		const issues =
+			await issueRepository.findByUniAndSenderIdAndStatus(uni, senderId, Status.OPEN);
+		let issue: Issue;
+&nbsp;
+		if (uniConfigs.has(RunTimeConfig.SUSPEND_AUTO_REPLY)
+			&amp;&amp; (uniConfigs.get(RunTimeConfig.SUSPEND_AUTO_REPLY).value as boolean)) {
+&nbsp;
+			if (issues.length === 0) {
+				const date = new Date();
+				issue = await issueRepository.create({
+					lastUpdatedDate: date,
+					messenger: messenger.name,
+					openDate: date,
+					senderId,
+					status: Status.OPEN,
+					uni,<span class="missing-if-branch" title="if path not taken" >I</span>
+				});<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+				if (!isNil(r<span class="missing-if-branch" title="if path not taken" >I</span>equestMessage)) {
+					await updateLog<span class="cstat-no" title="statement not covered" >(messageRepository, requestMessage, issue);</span>
+				}
+<span class="missing-if-branch" title="if path not taken" >I</span>
+				context.issue = <span class="cstat-no" title="statement not covered" >issue;</span>
+&nbsp;
+				return;
+			}<span class="branch-0 cbranch-no" title="branch not covered" ></span>
+		}<span class="branch-0 cbranch-no" title="branch not covered" ></span>
+&nbsp;
+		if (issues.length === 0) {
+			await next();
+		} else {
+			const workingIssue = issues[0];
+			const messages = sortMessage(await messageRepository.findByUniAndSenderIdAndIssueId(
+				uni, senderId, workingIssue.id as string));
+			const firstLibrarianMessage = findFirstLibrarianMessage(messages);
+			if (isNil(firstLibrarianMessage)) {
+				// No response from librarian, keep chatbot reply
+				await next();
+			} else {
+				// Librarian already responded to user
+				const timeGap = getLastMessageTimeGap(messages);
+				const commandNameConfig =
+					uniConfigs.get(<span class="missing-if-branch" title="else path not taken" >E</span>RunTimeConfig.CONFIRM_CLOSE_ISSUE_COMMAND_NAME);
+				const timeGapConfig =
+					uniConfigs.get(RunTimeConfig.TIME_GAP_IN_MS_TRIGGER_CONFIRM_CLOSE_ISSUE);
+				const recreateIssueConfig =
+					uniConfigs.get(RunTimeConfig.RECREATE_ISSUE_KEY_WORD);
+				let goToNext = false;
+&nbsp;
+				if (isNil(commandNameConfig)) {
+					logger.warn(
+						'Config not found: [%s]',
+						RunTimeConfig.CONFIRM_CLOSE_ISSUE_COMMAND_NAME,
+					);
+				}
+&nbsp;
+				if (isNil(timeGapConfig)) {
+					logger.warn(
+						'Config not found: [%s]',
+						RunTimeConfig.<span class="missing-if-branch" title="else path not taken" >E</span>TIME_GAP_IN_MS_TRIGGER_CONFIRM_CLOSE_ISSUE,
+					);
+				}
+&nbsp;
+				if (isNil(recreateIssueConfig)) {
+					logger.warn(
+						'Config not found: [%s]',
+						RunTimeConfig.RECREATE_ISSUE_KEY_WORD,
+					);
+				}
+&nbsp;
+				const recreateIssueWords = isNil(recreateIssueConfig)
+					? '' : (recreateIssueConfig.value as string).toLowerCase();
+				const requestText = isNil(request.message) ? undefined : request.message.toLowerCase();
+&nbsp;
+				if (!goToNext &amp;&amp; recreateIssueWords === requestText) {
+					const date = new Date();
+					const newIssue = {
+						lastUpdatedDate: date,
+						messenger: messenger.name,
+						openDate: date,
+						senderId,
+						status: Status.OPEN,
+						uni,
+					};<span class="cstat-no" title="statement not covered" ></span>
+					workingIssue.status = Status.CLOSED;
+					workingIssue.closedDate = date;
+					workingIssue.lastUpdatedDate = date;
+					await issueRepository.save(workingIssue);
+					context.issue = await issueRepository.create(newIssue);
+					if (!isNil(requestMessage)) {
+						await updateLog(messageRepository, requestMessage, workingIssue);
+					}
+					goToNext = true;
+				}
+&nbsp;
+				if (!goToNext
+					&amp;&amp; !isNil(commandNameConfig)
+					&amp;&amp; !isNil(timeGapConfig)
+					&amp;&amp; timeGap &gt;= (timeGapConfig.value as number)
+				) {
+					const commandName = commandNameConfig.value as string;
+					context.commands = context.commands.clear().push({
+						attributes: Map&lt;string, any&gt;(),
+						botResponses: List&lt;Response&gt;(),
+						features: Map&lt;string, string&gt;(),
+						name: commandName,
+						processedFeatures: Map&lt;string, any&gt;(),
+					});
+&nbsp;
+					if (!isNil(requestMessage)) {
+						requestMessage.commands.push(commandName);
+						context.requestMessage = await messageRepository.save(requestMessage) as RequestMessage;
+					}
+&nbsp;
+					goToNext = true;
+				}
+&nbsp;
+				if (!goToNext &amp;&amp; !isNil(commandNameConfig)) {
+					const commandName = commandNameConfig.value as string;
+					goToNext = messages
+						.filter(message =&gt; message.type === MessageType.REQUEST)
+						.some((message) =&gt; {
+							if (!isNil(message.commands) &amp;&amp; message.commands.indexOf(commandName) !== -1) {
+								return true;
+							}
+							return false;
+						});
+				}
+&nbsp;
+				if (goToNext) {
+					await next();
+				}
+&nbsp;
+			}
+		}
+&nbsp;
+		// End of if issues.length === 0
+	} else {
+		await next();
+	}
+};
+&nbsp;
+export default suspendAutoReplyMiddleware;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jun 08 2019 23:10:24 GMT+0800 (HKT)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
