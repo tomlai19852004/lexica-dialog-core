@@ -27,21 +27,25 @@ const responseMessageLoggingMiddleware: Middleware = async (context, next) => {
       uni,
     };
     if (responses.size === rawResponses.size) {
-      promises = Promise.all(responses.toArray().map((response, index) => {
-        return messageRepository.create({
-          ...baseResponseMessage,
-          rawResponse: rawResponses.get(index),
-          response,
-        });
-      }));
+      promises = Promise.all(
+        responses.toArray().map((response, index) => {
+          return messageRepository.create({
+            ...baseResponseMessage,
+            rawResponse: rawResponses.get(index),
+            response,
+          });
+        }),
+      );
     } else {
-      promises = Promise.all(responses.toArray().map((response, index) => {
-        return messageRepository.create({
-          ...baseResponseMessage,
-          rawResponse: rawResponses.toObject(),
-          response,
-        });
-      }));
+      promises = Promise.all(
+        responses.toArray().map((response, index) => {
+          return messageRepository.create({
+            ...baseResponseMessage,
+            rawResponse: rawResponses.toObject(),
+            response,
+          });
+        }),
+      );
     }
 
     promises.catch(err => logger.error('Create response message with error', err));

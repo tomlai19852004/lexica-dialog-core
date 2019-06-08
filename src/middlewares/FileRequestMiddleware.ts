@@ -2,12 +2,7 @@ import { isNil } from 'lodash';
 import { Map, List } from 'immutable';
 import { Middleware, RequestType } from '../Api';
 
-const supportedTypes = [
-  RequestType.AUDIO,
-  RequestType.FILE,
-  RequestType.IMAGE,
-  RequestType.VIDEO,
-];
+const supportedTypes = [RequestType.AUDIO, RequestType.FILE, RequestType.IMAGE, RequestType.VIDEO];
 
 const fileRequestMiddleware: Middleware = async (context, next) => {
   const { request, fileService } = context;

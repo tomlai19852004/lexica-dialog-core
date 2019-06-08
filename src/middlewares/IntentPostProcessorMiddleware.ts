@@ -3,16 +3,7 @@ import { Map } from 'immutable';
 import { Middleware } from '../Api';
 
 const intentPostProcessorMiddleware: Middleware = async (context, next) => {
-  const {
-    request,
-    commands,
-    postProcessors,
-    uni,
-    uniConfigs,
-    messenger,
-    issue,
-    senderInfo,
-  } = context;
+  const { request, commands, postProcessors, uni, uniConfigs, messenger, issue, senderInfo } = context;
   if (!isNil(request)) {
     const { locale, senderId } = request;
     const processorContext = {
@@ -24,7 +15,7 @@ const intentPostProcessorMiddleware: Middleware = async (context, next) => {
       uni,
       uniConfigs,
     };
-    const commandPromises = commands.toArray().map(async (command) => {
+    const commandPromises = commands.toArray().map(async command => {
       const { intent, features } = command;
       let processedFeatures = defaultTo(features, Map<string, any>());
       if (!isNil(intent) && !isNil(intent.postProcessors)) {
@@ -32,8 +23,7 @@ const intentPostProcessorMiddleware: Middleware = async (context, next) => {
           .filter(postProcessorName => postProcessors.has(postProcessorName))
           .map(postProcessorName => postProcessors.get(postProcessorName));
         for (const postProcessor of intentPostProcessors) {
-          processedFeatures = processedFeatures.merge(
-            await postProcessor(processorContext, processedFeatures));
+          processedFeatures = processedFeatures.merge(await postProcessor(processorContext, processedFeatures));
         }
       }
       command.processedFeatures = processedFeatures;

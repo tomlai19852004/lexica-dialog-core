@@ -1,5 +1,4 @@
-export { default as additionalResponseMessageMiddleware }
-  from './AdditionalResponseMessageMiddleware';
+export { default as additionalResponseMessageMiddleware } from './AdditionalResponseMessageMiddleware';
 export { default as commandsValidationMiddleware } from './CommandsValidationMiddleware';
 export { default as continuousOptionsToTextMiddleware } from './ContinuousOptionsToTextMiddleware';
 export { default as conversationIntentMiddleware } from './ConversationIntentMiddleware';

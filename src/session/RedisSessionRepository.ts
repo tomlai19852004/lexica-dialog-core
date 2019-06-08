@@ -3,8 +3,7 @@ import { RedisClient } from 'redis';
 import { Session, SessionRepository } from '../Api';
 
 class RedisSessionRepository implements SessionRepository {
-
-  constructor(private client: RedisClient) { }
+  constructor(private client: RedisClient) {}
 
   public findByUniAndSenderId(uni: string, senderId: string): Promise<Session> {
     return new Promise<Session>((resolve, reject) => {
@@ -41,7 +40,6 @@ class RedisSessionRepository implements SessionRepository {
   protected createKey(uni: string, senderId: string): string {
     return `${uni}_${senderId}`;
   }
-
 }
 
 export default RedisSessionRepository;

@@ -4,8 +4,11 @@ import { Middleware } from '../Api';
 const senderInfoMiddleware: Middleware = async (context, next) => {
   const { uni, messenger, request, senderInfoRepository } = context;
   if (!isNil(request)) {
-    const senderInfo = await senderInfoRepository
-      .findOneByUniAndMessengerAndSenderId(uni, messenger.name, request.senderId);
+    const senderInfo = await senderInfoRepository.findOneByUniAndMessengerAndSenderId(
+      uni,
+      messenger.name,
+      request.senderId,
+    );
     if (!isNil(senderInfo)) {
       context.senderInfo = senderInfo;
     }

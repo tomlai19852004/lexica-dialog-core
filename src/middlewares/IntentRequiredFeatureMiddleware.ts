@@ -3,7 +3,7 @@ import { Middleware, BotError, BotErrorCode } from '../Api';
 
 const intentRequiredFeaturesMiddleware: Middleware = async (context, next) => {
   const { commands } = context;
-  commands.toArray().forEach((command) => {
+  commands.toArray().forEach(command => {
     const { intent, features } = command;
     if (!isNil(intent)) {
       let hasAllRequiredKeys = true;

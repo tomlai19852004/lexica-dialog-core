@@ -10,7 +10,7 @@ function findFallbackCommand(uniConfigs: Map<string, Config>, commands: List<Bot
 
   const fallbackCommands = commands
     .toArray()
-    .map((command) => {
+    .map(command => {
       if (!isNil(command.intent) && !isNil(command.intent.fallbackCommand)) {
         return command.intent.fallbackCommand;
       }
@@ -31,15 +31,7 @@ const fallbackResponseMiddleware: Middleware = async (context, next) => {
   try {
     await next();
   } catch (error) {
-    const {
-      request,
-      uni,
-      uniConfigs,
-      intentRepository,
-      logger,
-      rawRequest,
-      commands,
-    } = context;
+    const { request, uni, uniConfigs, intentRepository, logger, rawRequest, commands } = context;
     const fallbackCommand = findFallbackCommand(uniConfigs, commands);
     let fallbacked = false;
 
@@ -61,17 +53,17 @@ const fallbackResponseMiddleware: Middleware = async (context, next) => {
       const intent = await intentRepository.findByUniCommandName(uni, fallbackCommand);
 
       if (!isNil(intent)) {
-        const responses = List(intent.responses
-          .map(response => intentResponseToBotResponse(response, Map<string, any>(), locale)));
-        context.responses =
-          List(responses.toArray().reduce((a, b) => a.concat(b), List<BotResponse>()));
+        const responses = List(
+          intent.responses.map(response => intentResponseToBotResponse(response, Map<string, any>(), locale)),
+        );
+        context.responses = List(responses.toArray().reduce((a, b) => a.concat(b), List<BotResponse>()));
         fallbacked = true;
       }
     }
 
     if (!fallbacked) {
       const response: BotResponse = {
-        message: 'Sorry, I don\'t know',
+        message: "Sorry, I don't know",
         type: ResponseType.TEXT,
       };
       context.responses = List([response]);

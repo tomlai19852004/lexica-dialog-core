@@ -1,11 +1,5 @@
 import { isNil, defaultTo } from 'lodash';
-import {
-  Request,
-  MessageType,
-  RequestType,
-  ResponseType,
-  RequestMessage,
-} from 'lexica-dialog-model/dist/Message';
+import { Request, MessageType, RequestType, ResponseType, RequestMessage } from 'lexica-dialog-model/dist/Message';
 import { Middleware } from '../Api';
 
 const requestMessageLoggingMiddleware: Middleware = async (context, next) => {
@@ -38,7 +32,7 @@ const requestMessageLoggingMiddleware: Middleware = async (context, next) => {
       };
     }
 
-    context.requestMessage = await messageRepository.create({
+    context.requestMessage = (await messageRepository.create({
       date,
       issueId: !isNil(issue) ? issue.id : undefined,
       messenger: messenger.name,
@@ -49,7 +43,7 @@ const requestMessageLoggingMiddleware: Middleware = async (context, next) => {
       sessionId: sessionService.getSessionId(),
       type: MessageType.REQUEST,
       uni,
-    }) as RequestMessage;
+    })) as RequestMessage;
 
     if (!isNil(issue)) {
       issue.lastUpdatedDate = date;

@@ -6,7 +6,7 @@ const memoriesFeaturesMiddleware: Middleware = async (context, next) => {
   const { sessionService, commands } = context;
   if (!isNil(sessionService)) {
     const memoriesFeatures = sessionService.getMemoriesFeatures();
-    commands.toArray().forEach((command) => {
+    commands.toArray().forEach(command => {
       const { features } = command;
       if (!isNil(features)) {
         command.features = memoriesFeatures.merge(features);
@@ -17,7 +17,7 @@ const memoriesFeaturesMiddleware: Middleware = async (context, next) => {
   }
   await next();
   if (!isNil(sessionService)) {
-    commands.toArray().forEach((command) => {
+    commands.toArray().forEach(command => {
       const { intent, features } = command;
       if (!isNil(intent) && !isNil(features)) {
         sessionService.addMemory(intent, features);

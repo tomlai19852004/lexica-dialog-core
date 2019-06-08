@@ -5,16 +5,14 @@ import { Session, SessionRepository, SessionOption, SessionService } from '../Ap
 import { Intent } from 'lexica-dialog-model/dist/Intent';
 
 class DefaultSessionService implements SessionService {
-
   private session: Session;
 
   constructor(
     private sessionRepository: SessionRepository,
     private uni: string,
     private senderId: string,
-    private expireInMs: number) {
-
-  }
+    private expireInMs: number,
+  ) {}
 
   public async init(): Promise<void> {
     if (isNil(this.session)) {
@@ -24,17 +22,16 @@ class DefaultSessionService implements SessionService {
 
   public async save(): Promise<void> {
     this.session.memories = this.session.memories
-      .map((memory) => {
+      .map(memory => {
         memory.expire = memory.expire - 1;
         return memory;
       })
       .filter(memory => memory.expire > 0);
     if (!isNil(this.session.lastOptions)) {
-      this.session.lastOptions = this.session.lastOptions
-        .map((sessionOption) => {
-          sessionOption.liveCount += 1;
-          return sessionOption;
-        });
+      this.session.lastOptions = this.session.lastOptions.map(sessionOption => {
+        sessionOption.liveCount += 1;
+        return sessionOption;
+      });
     }
     await this.sessionRepository.save(this.uni, this.senderId, this.session, this.expireInMs);
   }
@@ -55,15 +52,18 @@ class DefaultSessionService implements SessionService {
 
   public getMemoriesFeatures(): Map<string, string> {
     return this.session.memories.reduce(
-      (features, memory) => features.merge(Map(memory.features)), Map<string, string>(),
+      (features, memory) => features.merge(Map(memory.features)),
+      Map<string, string>(),
     );
   }
 
   public getIntentMemoryFeatures() {
-    return List(this.session.memories.map(memory => ({
-      command: memory.intent.command,
-      features: memory.features,
-    })));
+    return List(
+      this.session.memories.map(memory => ({
+        command: memory.intent.command,
+        features: memory.features,
+      })),
+    );
   }
 
   public startConversation(intent: Intent, features: Map<string, string>): void {
@@ -133,7 +133,6 @@ class DefaultSessionService implements SessionService {
       };
     }
   }
-
 }
 
 export default DefaultSessionService;

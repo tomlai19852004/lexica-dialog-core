@@ -6,7 +6,7 @@ const intentDefaultFeatureMiddleware: Middleware = async (context, next) => {
   const { sessionService, commands } = context;
   if (!isNil(sessionService)) {
     const memoriesFeatures = sessionService.getMemoriesFeatures();
-    commands.toArray().forEach((command) => {
+    commands.toArray().forEach(command => {
       const { features, intent } = command;
       if (!isNil(intent) && !isNil(intent.defaultFeatures)) {
         const defaultFeatures = intent.defaultFeatures;

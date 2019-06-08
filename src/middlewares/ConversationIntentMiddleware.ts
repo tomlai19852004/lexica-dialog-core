@@ -10,13 +10,15 @@ const conversationIntentMiddleware: Middleware = async (context, next) => {
       .map(command => command.features)
       .reduce((prev, next) => prev.merge(next), sessionService.getConversationFeatures());
     const intent = sessionService.getConversationIntent();
-    context.commands = List([{
-      attributes: Map<string, any>(),
-      botResponses: List<BotResponse>(),
-      features,
-      intent,
-      processedFeatures: Map<string, any>(),
-    }]);
+    context.commands = List([
+      {
+        attributes: Map<string, any>(),
+        botResponses: List<BotResponse>(),
+        features,
+        intent,
+        processedFeatures: Map<string, any>(),
+      },
+    ]);
   }
   await next();
 };
