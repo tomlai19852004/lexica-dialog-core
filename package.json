@@ -23,7 +23,7 @@
     "Virtual Agent"
   ],
   "author": "Tom Lai",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tomlai19852004/lexica-dialog-core/issues"
   },
