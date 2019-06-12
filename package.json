@@ -1,6 +1,6 @@
 {
   "name": "lexica-dialog-core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Core server for Lexica dialog agent.",
   "main": "index.js",
   "scripts": {
