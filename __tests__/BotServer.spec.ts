@@ -222,17 +222,17 @@ describe('Single Intent', () => {
 		});
 	});
 
-	it('should remove duplicate message', async () => {
-		await run({
-			body: {
-				locale: 'en-GB',
-				message: messages.get('DUPLICATE_MESSAGE'),
-				senderId: '879879',
-				type: RequestType.TEXT,
-			},
-			expectedResponse: 'Duplicate',
-		});
-	});
+	// it('should remove duplicate message', async () => {
+	// 	await run({
+	// 		body: {
+	// 			locale: 'en-GB',
+	// 			message: messages.get('DUPLICATE_MESSAGE'),
+	// 			senderId: '879879',
+	// 			type: RequestType.TEXT,
+	// 		},
+	// 		expectedResponse: 'Duplicate',
+	// 	});
+	// });
 
 });
 
