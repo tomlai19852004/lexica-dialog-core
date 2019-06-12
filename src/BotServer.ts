@@ -102,11 +102,13 @@ class BotServer {
 
     if (isNil(this.config.nlpService) && isNil(this.config.nlp)) {
       this.nlpService = new DefaultNlpService();
-    } else if (isNil(this.config.nlpService)) {
+    } else if (this.config.nlp) {
       this.nlpService = new ExternalNlpService(this.config.nlp.url);
-    } else {
+    } else if (this.config.nlpService) {
       this.nlpService = this.config.nlpService;
-    }
+    } else {
+		throw new Error('Unknown NLP error.');
+	}
 
     // if (isNil(this.config.nlpService)) {
     // 	if (isNil(this.config.nlp)) {
