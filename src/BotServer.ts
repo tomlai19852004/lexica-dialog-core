@@ -198,7 +198,7 @@ class BotServer {
 			middlewares.continuousOptionsToTextMiddleware,
 			middlewares.nlpMiddleware,
 			middlewares.suspendAutoReplyMiddleware,
-			middlewares.removeDuplicateResponseMiddleware,
+			// middlewares.removeDuplicateResponseMiddleware,
 			middlewares.additionalResponseMessageMiddleware,
 			middlewares.flattenResponsesMiddleware,
 			middlewares.conversationIntentMiddleware,
