@@ -107,8 +107,8 @@ class BotServer {
     } else if (this.config.nlpService) {
       this.nlpService = this.config.nlpService;
     } else {
-		throw new Error('Unknown NLP error.');
-	}
+      throw new Error('Unknown NLP error.');
+    }
 
     // if (isNil(this.config.nlpService)) {
     // 	if (isNil(this.config.nlp)) {
