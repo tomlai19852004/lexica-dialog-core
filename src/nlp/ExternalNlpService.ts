@@ -3,16 +3,27 @@ import { Map, List } from 'immutable';
 import * as request from 'request-promise-native';
 import { BotCommand, NlpService, IntentMemoryFeatures } from '../Api';
 
-// Default NLP would perform nothing as it assumes human agent will take over.
+// External NLP service which require a NLP server url.
 
-class DefaultNlpService implements NlpService {
+class ExternalNlpService implements NlpService {
+	constructor(private readonly url: string) {}
+
 	public async analyse(
 		message: string,
 		uni: string,
 		intentMemoryFeatures?: List<IntentMemoryFeatures>,
 	): Promise<List<BotCommand>> {
 		const features = !isNil(intentMemoryFeatures) ? intentMemoryFeatures.toArray() : undefined;
-		const commands : BotCommand[] = [];
+		const commands = await request({
+			body: {
+				features,
+				msg: message,
+				uni,
+			},
+			json: true,
+			method: 'POST',
+			uri: this.url,
+		});
 		return List<BotCommand>(
 			commands.map((command: any) => ({
 				features: Map<string, string>(command.features),
@@ -22,4 +33,4 @@ class DefaultNlpService implements NlpService {
 	}
 }
 
-export default DefaultNlpService;
+export default ExternalNlpService;

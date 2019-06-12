@@ -77,6 +77,7 @@ const suspendAutoReplyMiddleware: Middleware = async (context, next) => {
 		}
 
 		if (issues.length === 0) {
+			// No issue found, virtual agent is allowed to response
 			await next();
 		} else {
 			const workingIssue = issues[0];
@@ -85,10 +86,11 @@ const suspendAutoReplyMiddleware: Middleware = async (context, next) => {
 			);
 			const firstLibrarianMessage = findFirstLibrarianMessage(messages);
 			if (isNil(firstLibrarianMessage)) {
-				// No response from librarian, keep chatbot reply
+				// No response from librarian, virtual agent is allowed to response
 				await next();
 			} else {
-				// Librarian already responded to user
+				// Calculate if the virtual agent should response to client automatically:
+				// Check if there is an existing issue and if the time of the last response from user has surpassed the waiting period
 				const timeGap = getLastMessageTimeGap(messages);
 				const commandNameConfig = uniConfigs.get(RunTimeConfig.CONFIRM_CLOSE_ISSUE_COMMAND_NAME);
 				const timeGapConfig = uniConfigs.get(RunTimeConfig.TIME_GAP_IN_MS_TRIGGER_CONFIRM_CLOSE_ISSUE);

@@ -40,9 +40,10 @@ import * as middlewares from './middlewares';
 import * as executors from './executors';
 import * as preProcessors from './pre-processors';
 import * as postProcessors from './post-processors';
-import DefaultNlpService from './nlp/DefaultNlpService';
+import { DefaultNlpService, ExternalNlpService } from './nlp';
 import { RedisSessionRepository } from './session';
 import { S3Service, ElasticTranscoderService } from './aws';
+import { Service } from 'aws-sdk';
 
 class BotServer {
 	public readonly server: Koa;
@@ -98,16 +99,24 @@ class BotServer {
 			secretAccessKey: this.config.aws.secretAccessKey,
 		});
 		AWS.config.setPromisesDependency(Promise);
-
-		if (isNil(this.config.nlpService)) {
-			if (isNil(this.config.nlp)) {
-				throw new Error('NLP config not set');
-			} else {
-				this.nlpService = new DefaultNlpService(this.config.nlp.url);
-			}
+		
+		if(isNil(this.config.nlpService) && isNil(this.config.nlp)){
+			this.nlpService = new DefaultNlpService();
+		} else if(isNil(this.config.nlpService)){
+			this.nlpService = new ExternalNlpService(this.config.nlp.url);
 		} else {
 			this.nlpService = this.config.nlpService;
 		}
+
+		// if (isNil(this.config.nlpService)) {
+		// 	if (isNil(this.config.nlp)) {
+		// 		throw new Error('NLP config not set');
+		// 	} else {
+		// 		this.nlpService = new DefaultNlpService(this.config.nlp.url);
+		// 	}
+		// } else {
+		// 	this.nlpService = this.config.nlpService;
+		// }
 
 		if (isNil(this.config.aws.s3)) {
 			throw new Error('Please config aws.s3 or fileService');
@@ -198,6 +207,8 @@ class BotServer {
 			middlewares.continuousOptionsToTextMiddleware,
 			middlewares.nlpMiddleware,
 			middlewares.suspendAutoReplyMiddleware,
+			// The original NLP service uses a rule based system where there can be duplicate intent detected. 
+			// It should be handled within the NLP Service.
 			// middlewares.removeDuplicateResponseMiddleware,
 			middlewares.additionalResponseMessageMiddleware,
 			middlewares.flattenResponsesMiddleware,

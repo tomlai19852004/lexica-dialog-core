@@ -8,6 +8,7 @@ Lexica is a robust **virtual dialogue system framework** that can adapt to diffe
 
 [https://www.lexica.io](https://www.lexica.io)
 
+
 ## Prequisites
 * Amazon Web Service
 * MongoDB >= 3.6
@@ -19,7 +20,9 @@ Lexica is a robust **virtual dialogue system framework** that can adapt to diffe
 
 
 ### Installation
+```
 npm install --save lexica-dialog-core
+```
 
 ### Example Usage
 [Example usage](https://github.com/tomlai19852004/lexica-virtual-agent)
