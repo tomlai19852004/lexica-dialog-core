@@ -7,7 +7,7 @@ const commandsValidationMiddleware: Middleware = async (context, next) => {
   if (
     !uniConfigs.has(RunTimeConfig.SUSPEND_AUTO_REPLY) ||
     (uniConfigs.has(RunTimeConfig.SUSPEND_AUTO_REPLY) &&
-    !(uniConfigs.get(RunTimeConfig.SUSPEND_AUTO_REPLY).value as boolean))
+      !(uniConfigs.get(RunTimeConfig.SUSPEND_AUTO_REPLY).value as boolean))
   ) {
     if (commands.isEmpty()) {
       throw new BotError(BotErrorCode.INTENT_NOT_FOUND);
