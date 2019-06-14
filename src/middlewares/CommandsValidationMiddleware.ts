@@ -1,11 +1,17 @@
 import { isNil } from 'lodash';
-import { BotError, BotErrorCode, Middleware } from '../Api';
+import { BotError, BotErrorCode, Middleware, RunTimeConfig } from '../Api';
 
 const commandsValidationMiddleware: Middleware = async (context, next) => {
-  const { commands } = context;
+  const { commands, uniConfigs } = context;
 
-  if (commands.isEmpty()) {
-    throw new BotError(BotErrorCode.INTENT_NOT_FOUND);
+  if (
+    !uniConfigs.has(RunTimeConfig.SUSPEND_AUTO_REPLY) ||
+    (uniConfigs.has(RunTimeConfig.SUSPEND_AUTO_REPLY) &&
+    !(uniConfigs.get(RunTimeConfig.SUSPEND_AUTO_REPLY).value as boolean))
+  ) {
+    if (commands.isEmpty()) {
+      throw new BotError(BotErrorCode.INTENT_NOT_FOUND);
+    }
   }
 
   commands.toArray().forEach(command => {
