@@ -94,7 +94,7 @@ class BotServer {
       ...redis.options,
     };
 
-    if (redis.url) {
+    if (redis.url.trim()) {
       redisConfig.url = redis.url;
     } else {
       redisConfig.host = redis.host;
@@ -159,6 +159,10 @@ class BotServer {
     } else {
       this.logger = this.config.logger;
     }
+
+    this.redisClient.on('error', (err) => {
+      this.logger.error(`Unable to connect Redis ${redis.host}:${redis.port}`);
+    });
 
     this.setupKoa();
     this.nodeServer = this.server.listen(this.config.port);
