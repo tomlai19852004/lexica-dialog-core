@@ -160,7 +160,7 @@ class BotServer {
       this.logger = this.config.logger;
     }
 
-    this.redisClient.on('error', (err) => {
+    this.redisClient.on('error', err => {
       this.logger.error(`Unable to connect Redis ${redis.host}:${redis.port}`);
     });
 
