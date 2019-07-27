@@ -90,11 +90,11 @@ class BotServer {
 
     this.mongoConnection = mongoose.connection;
 
-    const redisConfig : any = {
-      ...redis.options
+    const redisConfig: any = {
+      ...redis.options,
     };
 
-    if( redis.url ){
+    if (redis.url) {
       redisConfig.url = redis.url;
     } else {
       redisConfig.host = redis.host;
