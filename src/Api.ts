@@ -253,6 +253,8 @@ interface BotServerConfig {
   };
   redis: {
     url: string;
+    host: string;
+    port: number;
     options?: any;
   };
   aws: {

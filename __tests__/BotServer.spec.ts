@@ -92,6 +92,8 @@ const config: BotServerConfig = {
 		throwErrorPreprocessor,
 	}),
 	redis: {
+		host: 'localhost',
+		port: 6379,
 		url: 'redis://localhost',
 	},
 };

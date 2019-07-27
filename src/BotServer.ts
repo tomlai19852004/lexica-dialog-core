@@ -89,10 +89,19 @@ class BotServer {
     (mongoose as any).Promise = global.Promise;
 
     this.mongoConnection = mongoose.connection;
-    this.redisClient = createClient({
-      ...redis.options,
-      url: redis.url,
-    });
+
+    const redis_config : any = {
+      ...redis.options
+    };
+
+    if( redis.url ){
+      redis_config['url'] = redis.url;
+    } else {
+      redis_config['host'] = redis.host;
+      redis_config['port'] = redis.port;
+    }
+
+    this.redisClient = createClient(redis_config);
 
     AWS.config.update({
       accessKeyId: this.config.aws.accessKeyId,
